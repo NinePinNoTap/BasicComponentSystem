@@ -8,8 +8,8 @@ using namespace std;
 
 void main()
 {
-	Entity* entity;
-	Transform* transform;
+	Entity* entity = nullptr;
+	Transform* transform = nullptr;
 
 	// Create Entity
 	entity = new Entity;
@@ -26,7 +26,7 @@ void main()
 	}
 
 	printf("\n\nCheck Two!\n");
-	entity->addComponent<Transform>(&transform);
+	//entity->addComponent<Transform>(&transform);
 
 	if (transform)
 	{
@@ -42,11 +42,23 @@ void main()
 
 	if (entity->hasComponent<Transform>())
 	{
-		printf("Transform was found");
+		printf("Entity has the component : Transform");
 	}
 	else
 	{
 		printf("Transform was not found");
 	}
+	
+	printf("\n\nCheck Four!\n");
+	
+	if (entity->removeComponent<Transform>())
+	{
+		printf("Transform was found and removed");
+	}
+	else
+	{
+		printf("Transform could not be removed as it was not found");
+	}
+
 	cin.get();
 }
